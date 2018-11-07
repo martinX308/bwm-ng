@@ -1,0 +1,12 @@
+<section id="rentalListing">
+  <h1 class="title">Your Home All Around the World</h1>
+  <div class="row"> 
+    <!-- single rental card -->
+    
+    <div class='col-sm-6 col-md-3' *ngFor='let item of rentalArray'>
+      <bwm-rental-list-item [currentRental]="item"></bwm-rental-list-item>
+    </div>
+   
+
+  </div>
+</section>
