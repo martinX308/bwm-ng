@@ -1,0 +1,18 @@
+<agm-map 
+  (mapReady)="mapReadyHandler()" 
+  [latitude]="lat" 
+  [longitude]="lng"
+  [zoom] = "13">
+  <agm-marker *ngIf="!isPositionError && lat && lng"
+    [latitude]="lat" 
+    [longitude]="lng">
+  </agm-marker>
+  <agm-info-window *ngIf="isPositionError"
+     [latitude]="0" 
+    [longitude]="0"
+    [maxWidth]="300"
+    [isOpen]=true>
+      Uuuups, there is a problem to find the location on the map. 
+      We are trying to resolve the problem as fast as possible.
+  </agm-info-window>
+</agm-map>
