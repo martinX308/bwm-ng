@@ -1,11 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const config= require('./config/dev');
-const FakeDb = require('./models/fake-db');
+const FakeDb = require('./fake-db');
 
 const rentalRoutes= require ('./routes/rentals');
+const userRoutes= require ('./routes/users');
 
-mongoose.connect(config.DB_URI)
+mongoose.connect(
+  config.DB_URI,
+  { useNewUrlParser: true, useCreateIndex: true }
+)
   .then(() => {
     const fakeDb = new FakeDb();
     fakeDb.seedDb();
@@ -13,11 +18,12 @@ mongoose.connect(config.DB_URI)
 
 const app= express();
 
-app.use('/api/v1/rentals',rentalRoutes);
+app.use(bodyParser.json());
 
-app.get('/rentals', function(req,res){
-  res.json({'success':true});
-})
+app.use('/api/v1/rentals',rentalRoutes);
+app.use('/api/v1/users',userRoutes);
+
+
 
 const Port = process.env.Port||3001;
 
