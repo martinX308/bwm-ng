@@ -10,7 +10,7 @@ exports.auth = function (req,res) {
     return  res.status(422).send({
        errors:[{
          title:'Data missing!',
-         details:'Provide email and password'
+         detail:'Provide email and password'
        }]});
    }
 
@@ -23,7 +23,7 @@ exports.auth = function (req,res) {
       return  res.status(422).send({
         errors:[{
           title:'Invalid user',
-          details:'User does not exist'
+          detail:'User does not exist'
         }]});
     }
     if(user.isSamePassword(password)){
@@ -38,7 +38,7 @@ exports.auth = function (req,res) {
       return  res.status(422).send({
         errors:[{
           title:'Wrong data',
-          details:'Wrong email or password'
+          detail:'Wrong email or password'
         }]});
     }
 
@@ -55,7 +55,7 @@ exports.register = function (req,res) {
    return  res.status(422).send({
       errors:[{
         title:'Data missing!',
-        details:'Provide email and password'
+        detail:'Provide email and password'
       }]});
   }
 
@@ -63,7 +63,7 @@ exports.register = function (req,res) {
     return res.status(422).send({
       errors:[{
         title:'Invalid password!',
-        details:'Password is not the same as confirmation!'
+        detail:'Password is not the same as confirmation!'
       }]});
   }
 
