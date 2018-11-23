@@ -1,5 +1,19 @@
 @import 'variables';
 
+.daterangepicker {
+  td{
+    &.in-range {
+      background-color: #ffa9a9 !important;
+    }
+    &.active {
+      background-color: $main-color !important;
+      &:hover{
+        background-color: $main-color !important;
+      }
+    }
+  }
+}
+
 .booking {
   padding: 20px;
   border: 1px solid #d3d3d3;
@@ -36,4 +50,28 @@
     font-size: 13px;
     font-weight: 300;
   }
+}
+
+//Modal
+.title{
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.buttons {
+  margin: 15px 0px;
+}
+
+em {
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+p {
+  margin: 0;
+}
+
+.modal-error {
+  margin: 16px;
 }

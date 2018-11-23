@@ -20,6 +20,18 @@ html, body, p{
   cursor: pointer;
 }
 
+.btn-bwm{
+  background-color: $main-color;
+  border-color: $main-color;
+  color: white;
+  padding: 15px 30px;
+  font-size: 20px !important;
+
+  &:hover, &:focus, &:active {
+    border-color: $main-color !important;
+    background-color: $main-color !important;
+  }
+}
 .bwm-form {
   color: $main-text-color;
 
