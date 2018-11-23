@@ -34,7 +34,7 @@ exports.createBooking = function (req,res) {
           return res.status(422).send({errors:normalizeErrors(err.errors)});
         }
         foundRental.save();
-        User.update({_id:user.id}, {$push: {bookings: booking}}, function() {});
+        User.updateOne({_id:user.id}, {$push: {bookings: booking}}, function() {});
         return res.json({startAt: booking.startAt, endAt:booking.endAt});
 
       });
