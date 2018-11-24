@@ -1,30 +1,35 @@
 <div class="booking">
     <h3 class="booking-price">${{rental.dailyRate}} <span class="booking-per-night">per night</span></h3>
     <hr>
+    <ng-container *ngIf="auth.isAuthenticated()">
     <form #bookingForm="ngForm">
-    <label>Dates</label>
-      <input type="text" 
-            class="form-control daterangepicker-input" 
-            name="daterangeInput" 
-            daterangepicker [options]="options" 
-            (selected)="selectedDate($event, daterange)"
-      />
-      <div class="form-group">
-        <label for="guests">Guests</label>
-        <input name="guests"
-              type="number" 
-              class="form-control"
-              id="guests"
-              aria-describedby="emailHelp"
-              [(ngModel)] = "newBooking.guests"
-              required>
-      </div>
-    </form>
-    <button (click)="openConfirmModal(content)"
-             class="btn btn-danger btn-confirm btn-block"
-             [disabled]="!bookingForm.form.valid || !newBooking.startAt || !newBooking.endAt">
-             Reserve place now
-    </button>
+      <label>Dates</label>
+        <input type="text" 
+              class="form-control daterangepicker-input" 
+              name="daterangeInput" 
+              daterangepicker [options]="options" 
+              (selected)="selectedDate($event, daterange)"
+        />
+        <div class="form-group">
+          <label for="guests">Guests</label>
+          <input name="guests"
+                type="number" 
+                class="form-control"
+                id="guests"
+                aria-describedby="emailHelp"
+                [(ngModel)] = "newBooking.guests"
+                required>
+        </div>
+      </form>
+      <button (click)="openConfirmModal(content)"
+              class="btn btn-danger btn-confirm btn-block"
+              [disabled]="!bookingForm.form.valid || !newBooking.startAt || !newBooking.endAt">
+              Reserve place now
+      </button>
+    </ng-container>
+    <div *ngIf="!auth.isAuthenticated()" class="should-login">
+      <div class="btn btn-bwm" routerLink="/login">Login and book this place</div>
+    </div>
     <hr>
     <p class="booking-note-title">People are interested into this house</p>
     <p class="booking-note-text">
