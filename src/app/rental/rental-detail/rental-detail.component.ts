@@ -20,8 +20,8 @@ export class RentalDetailComponent implements OnInit {
     .subscribe(
       (params) => {
         this.getRental(params['rentalId']);
-      }
-    )}
+      });
+  }
 
   getRental(rentalId:string): any {
     this.rentalService.getRentalById(rentalId).subscribe(
