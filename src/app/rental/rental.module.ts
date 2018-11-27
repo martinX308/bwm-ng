@@ -1,11 +1,11 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import { Routes, RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
-import {NgPipesModule} from 'ngx-pipes';
-import {MapModule} from '../common/map/map.module';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { NgPipesModule } from 'ngx-pipes';
+import { MapModule } from '../common/map/map.module';
 import { Daterangepicker } from 'ng2-daterangepicker';
-import { FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 
 import { RentalComponent } from './rental.component';
 import { RentalListComponent } from './rental-list/rental-list.component';
@@ -15,7 +15,7 @@ import { RentalDetailBookingComponent } from './rental-detail/rental-detail-book
 import { RentalSearchComponent } from './rental-search/rental-search.component';
 import { RentalCreateComponent } from './rental-create/rental-create.component';
 
-import { UppercasePipe} from '../common/pipes/uppercase.pipe';
+import { UppercasePipe } from '../common/pipes/uppercase.pipe';
 import { AuthGuard } from '../auth/shared/auth.guard';
 import { RentalService} from './shared/rental.service';
 import { HelperService } from '../common/service/helper.service';
