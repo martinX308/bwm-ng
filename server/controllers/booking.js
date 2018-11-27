@@ -61,7 +61,7 @@ exports.getUserBookings = function(req,res) {
           if (err) {
             return res.status(422).send({errors:normalizeErrors(err.errors)});
           }
-          return res.json({foundBookings});
+          return res.json(foundBookings);
         })
 }
 

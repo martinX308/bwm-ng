@@ -105,7 +105,7 @@ router.get('/manage', UserCtrl.authMiddleware, function (req,res) {
           if (err) {
             return res.status(422).send({errors:normalizeErrors(err.errors)});
           }
-          return res.json({foundRentals});
+          return res.json(foundRentals);
         })
 });
 

@@ -1,5 +1,5 @@
-import{Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import{ Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Rental } from './rental.model';
 
@@ -21,6 +21,14 @@ export class RentalService {
   }
 
   public createRental(rental: Rental): Observable <any> {
-    return this.http.post(`/api/v1/rentals`,rental)
+    return this.http.post(`/api/v1/rentals`,rental);
+  }
+  
+  public getRentalsByUser(): Observable <any> {
+    return this.http.get(`/api/v1/rentals/manage`);
+  }
+
+  public deleteRentalById(rentalId:string):Observable <any> {
+    return this.http.delete(`/api/v1/rentals/${rentalId}`);
   }
 }

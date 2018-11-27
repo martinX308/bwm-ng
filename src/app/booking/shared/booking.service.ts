@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Booking } from './booking.model';
 
@@ -9,6 +9,12 @@ export class BookingService {
   constructor(private http:HttpClient) { }
 
   public saveBooking(bookingData: Booking): Observable <any>{
-    return this.http.post('/api/v1/bookings',bookingData);
+    return this.http.post('/api/v1/bookings', bookingData);
   } 
+
+  public getBookingsByUser(): Observable <any> {
+    return this.http.get(`/api/v1/bookings/manage`);
+  }
+
 }
+
