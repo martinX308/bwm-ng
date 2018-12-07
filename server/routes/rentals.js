@@ -3,6 +3,8 @@ const router = express.Router();
 const Rental = require('../models/rental');
 const User = require('../models/user');
 const UserCtrl = require ('../controllers/user');
+const {normalizeErrors} = require ('../helpers/mongoose');
+
 
 router.delete('/:id',UserCtrl.authMiddleware, function(req,res) {
   const user = res.locals.user;
@@ -44,6 +46,36 @@ router.delete('/:id',UserCtrl.authMiddleware, function(req,res) {
           return res.json({'status':'deleted'})
         });
 });
+
+router.patch('/:id',  UserCtrl.authMiddleware, function (req,res) {
+  const rentalData = req.body;
+  const user = res.locals.user;
+
+  Rental.findById(req.params.id)
+        .populate('user')
+        .exec(function(err,foundRental){
+          if (err){
+            return res.status(422).send({errors:normalizeErrors(err.errors)});
+          }
+          
+          if(foundRental.user.id !== user.id){
+            return  res.status(422).send({
+              errors:[{
+                title:'Invalid user',
+                detail:'You are not rental owner'
+            }]});
+          }
+
+          foundRental.set(rentalData);
+          foundRental.save(function(err) {
+            if (err){
+              return res.status(422).send({errors:normalizeErrors(err.errors)});
+            }
+            return res.status(200).send(foundRental);
+          });
+
+        });
+})
 
 router.post('', UserCtrl.authMiddleware, function (req,res) {
   const {title, city, street, category, image, bedrooms, shared, description, dailyRate} = req.body;
@@ -108,6 +140,25 @@ router.get('/manage', UserCtrl.authMiddleware, function (req,res) {
           return res.json(foundRentals);
         })
 });
+
+router.get('/:id/verify-user', UserCtrl.authMiddleware, function(req,res){
+  const user = res.locals.user;
+  Rental
+    .findById(req.params.id)
+    .populate('user')
+    .exec(function(err, foundRental){
+      if(foundRental.user.id !== user.id){
+        return  res.status(422).send({
+          errors:[{
+            title:'Invalid user',
+            detail:'You are not rental owner'
+        }]});
+      }
+
+      return res.json({status: 'verified'});
+      
+    });
+})
 
 router.get('/:id',function(req,res){
   const rentalId=req.params.id;

@@ -28,7 +28,6 @@ export class ManageRentalComponent implements OnInit {
       this.rentalArray.splice(this.rentalDeleteIndex,1);
       this.rentalDeleteIndex = undefined;
     }, (errorResponse: HttpErrorResponse) => {
-      debugger;
       this.toastr.error(errorResponse.error.errors[0].detail,'Failed!');
 
     }
