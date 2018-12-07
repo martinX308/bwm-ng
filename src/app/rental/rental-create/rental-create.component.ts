@@ -25,7 +25,6 @@ export class RentalCreateComponent implements OnInit {
     console.log(this.newRental );
     this.rentalService.createRental(this.newRental).subscribe(
       (rental: Rental) => {
-        debugger;
         this.router.navigate([`/rentals/${rental._id}`])
       },
       (errorResponce: HttpErrorResponse) => {
