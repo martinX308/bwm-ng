@@ -98,7 +98,7 @@ router.post('', UserCtrl.authMiddleware, function (req,res) {
       return res.status(422).send({errors:normalizeErrors(err.errors)});
     }
     User.updateOne({_id: user.id}, {$push: {rentals:rental}}, function () {});
-    return res.status(200).json({rental});
+    return res.status(200).json(rental);
   });
 
 });
