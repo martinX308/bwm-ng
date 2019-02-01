@@ -21,10 +21,19 @@ export class RentalCreateComponent implements OnInit {
     this.newRental.shared = false;
   }
 
+  public handleImageUpload(imageUrl: string) {
+    this.newRental.image = imageUrl;
+  }
+
+  public handleImageError() {
+    this.newRental.image = '';
+  }
+
   public createRental () {
     console.log(this.newRental );
     this.rentalService.createRental(this.newRental).subscribe(
       (rental: Rental) => {
+         console.log(rental);
         this.router.navigate([`/rentals/${rental._id}`])
       },
       (errorResponce: HttpErrorResponse) => {

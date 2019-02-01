@@ -4,9 +4,10 @@ const bodyParser = require('body-parser');
 const config= require('./config/dev');
 const FakeDb = require('./fake-db');
 
-const rentalRoutes= require ('./routes/rentals');
-const userRoutes= require ('./routes/users');
-const bookingRoutes= require ('./routes/bookings');
+const rentalRoutes= require ('./routes/rentals'),
+      userRoutes= require ('./routes/users'),
+      bookingRoutes= require ('./routes/bookings')
+      imageUploadRoutes = require('./routes/image-upload');
 
 mongoose.connect(
   config.DB_URI,
@@ -21,9 +22,10 @@ const app= express();
 
 app.use(bodyParser.json());
 
-app.use('/api/v1/rentals',rentalRoutes);
-app.use('/api/v1/users',userRoutes);
-app.use('/api/v1/bookings',bookingRoutes);
+app.use('/api/v1/rentals', rentalRoutes);
+app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/bookings', bookingRoutes);
+app.use('/api/v1', imageUploadRoutes);
 
 
 
