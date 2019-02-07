@@ -25,6 +25,8 @@ const userSchema = new Schema({
     lowercase: true,
     match:[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,'Email format not correct']
   },
+  stripeCustomerId: String,
+  revenue: Number,
   rentals: [{
     type: Schema.Types.ObjectId,
     ref:'Rental'
