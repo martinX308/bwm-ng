@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, pipe } from 'rxjs/Rx';
+import { Observable, pipe } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -51,6 +51,10 @@ export class AuthService {
 
   public getUsername(): string{
     return this.decodedToken.username;
+  }
+
+  public getUserId(): string{
+    return this.decodedToken.userId;
   }
 
   public getAuthToken(): string{

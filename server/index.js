@@ -6,7 +6,8 @@ const FakeDb = require('./fake-db');
 
 const rentalRoutes= require ('./routes/rentals'),
       userRoutes= require ('./routes/users'),
-      bookingRoutes= require ('./routes/bookings')
+      bookingRoutes= require ('./routes/bookings'),
+      paymentRoutes = require ('./routes/payments'),
       imageUploadRoutes = require('./routes/image-upload');
 
 mongoose.connect(
@@ -15,7 +16,7 @@ mongoose.connect(
 )
   .then(() => {
     const fakeDb = new FakeDb();
-    // fakeDb.seedDb();
+    //fakeDb.seedDb();
   });
 
 const app= express();
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use('/api/v1/rentals', rentalRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/bookings', bookingRoutes);
+app.use('/api/v1/payments', paymentRoutes);
 app.use('/api/v1', imageUploadRoutes);
 
 
