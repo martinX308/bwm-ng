@@ -27,7 +27,6 @@ exports.getPendingPayments = function(req, res) {
 exports.confirmPayment = function(req,res) {
   const payment = req.body;
   const user = res.locals.user;
-  debugger;
 
   Payment.findById(payment._id)
     .populate('toUser')
