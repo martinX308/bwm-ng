@@ -7,6 +7,7 @@ import { MapModule } from '../common/map/map.module';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { FormsModule } from "@angular/forms";
 import { ImageUploadModule } from '../common/components/image-upload/image-upload.module';
+import { StarRatingModule } from 'angular-star-rating';
 
 import { RentalComponent } from './rental.component';
 import { RentalListComponent } from './rental-list/rental-list.component';
@@ -60,7 +61,8 @@ const routes: Routes =[
     FormsModule,
     EditableModule,
     ImageUploadModule,
-    PaymentModule
+    PaymentModule,
+    StarRatingModule.forChild()
   ],
   providers:[
     RentalService,

@@ -8,14 +8,15 @@ const rentalRoutes= require ('./routes/rentals'),
       userRoutes= require ('./routes/users'),
       bookingRoutes= require ('./routes/bookings'),
       paymentRoutes = require ('./routes/payments'),
-      imageUploadRoutes = require('./routes/image-upload');
+      imageUploadRoutes = require('./routes/image-upload'),
+      reviewRoutes = require('./routes/reviews');
 
 mongoose.connect(
   config.DB_URI,
   { useNewUrlParser: true, useCreateIndex: true }
 )
   .then(() => {
-    const fakeDb = new FakeDb();
+    //const fakeDb = new FakeDb();
     //fakeDb.seedDb();
   });
 
@@ -27,6 +28,7 @@ app.use('/api/v1/rentals', rentalRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/bookings', bookingRoutes);
 app.use('/api/v1/payments', paymentRoutes);
+app.use('/api/v1/reviews', reviewRoutes);
 app.use('/api/v1', imageUploadRoutes);
 
 

@@ -29,6 +29,9 @@
           <p class="rental-description">
             {{rental.description }}
           </p>
+          <div class= "rental-rating">
+            <span>{{rating}} / 5</span>
+          </div>
           <hr>
           <div class="rental-assets">
             <h3 class="title">Assets</h3>
@@ -53,3 +56,37 @@
       </bwm-rental-detail-booking>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-8">
+        <section>
+            <h2>Reviews</h2>
+            <div *ngFor="let review of reviews" class="card review-card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                      <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                      <p class="text-secondary text-center">{{ formatDate(review.createdAt) }}</p>
+                  </div>
+                  <div class="col-md-10">
+                    <div>
+                      <a><strong>{{ review.user.username }}</strong></a>
+                      <div class="review-section">
+                        <star-rating [starType]="'svg'"
+                                     [numOfStars]="5"
+                                     [showHalfStars]="true"
+                                     [disabled]="true"
+                                     [rating]="review.rating">
+                        </star-rating>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p>{{ review.text }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+      </div>
+    </div>
+  </div>
+</section>

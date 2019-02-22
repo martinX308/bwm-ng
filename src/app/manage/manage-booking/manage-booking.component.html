@@ -2,7 +2,7 @@
   <h1 class="page-title">My Bookings</h1>
   <div class="row">
      <ng-container *ngIf="bookings && bookings.length > 0"> 
-      <div class="col-md-4" *ngFor="let booking of bookings">
+      <div class="col-md-4" *ngFor="let booking of bookings; let i = index">
         <div class="card text-center">
           <div class="card-header" >
             {{booking.rental? booking.category : 'Rental Deleted'}}
@@ -19,6 +19,9 @@
           </div>
           <div class="card-footer text-muted">
             Booked on {{booking.createdAt | date}}
+            <bwm-review *ngIf="!booking.review && isExpired(booking.endAt)"
+              [bookingId]="booking._id"
+              (reviewSubmitted) = "reviewPublished(i,$event)"></bwm-review>
           </div>
         </div>
       </div>

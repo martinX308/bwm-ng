@@ -34,7 +34,7 @@ export class RentalDetailBookingComponent implements OnInit {
     alwaysShowCalendars: false,
     opens:'left',
     autoUpdateInput: false,
-    isInvalidDate:this.checkForInvalidDates.bind(this)
+    //isInvalidDate:this.checkForInvalidDates.bind(this)
   };
  // see original project for full list of options
   // can also be setup using the config service to apply to multiple pickers

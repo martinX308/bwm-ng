@@ -31,7 +31,6 @@ exports.createBooking = function (req,res) {
     }
 
     if(isValidBooking(booking,foundRental)){
-      debugger;
       booking.user = user;
       booking.rental = foundRental;
 
@@ -100,7 +99,6 @@ function isValidBooking(proposedBooking, rental) {
 
 async function  createPayment ( booking, toUser, token){
   const { user } = booking;
-  debugger;
   const customer = await stripe.customers.create({
     source: token.id,
     email: user.email
